@@ -31,10 +31,10 @@
 # 1. PARAMETROS DEL MODELO
 # ==========================================================
 
-# Número total de luciérnagas
+# Número total de luciérnagas (N)
 N <- 50
 
-# Fuerza de acoplamiento entre individuos
+# Fuerza de acoplamiento entre individuos (K)
 #
 # Este parámetro controla cuánto influye
 # una luciérnaga sobre otra.
@@ -49,26 +49,26 @@ N <- 50
 #
 K <- 0.03
 
-# Paso temporal de integración
+# Paso temporal de integración (dt)
 #
 # Representa el tamaño del intervalo de tiempo
 # utilizado en la simulación numérica.
 #
 dt <- 0.05
 
-# Tiempo total de simulación
+# Tiempo total de simulación (Tmax)
 Tmax <- 100
 
-# Número total de pasos temporales
+# Número total de pasos temporales (steps)
 steps <- Tmax / dt
 
 
 
 # ==========================================================
-# 2. FRECUENCIAS NATURALES
+# 2. FRECUENCIAS NATURALES (omega)
 # ==========================================================
 
-# Fijamos una semilla para reproducibilidad
+# Se fija una semilla para reproducibilidad
 #
 # Esto asegura que los resultados sean
 # siempre los mismos al ejecutar el código.
@@ -95,7 +95,7 @@ omega <- rnorm(N, mean = 1, sd = 0.1)
 
 
 # ==========================================================
-# 3. FASES INICIALES
+# 3. FASES INICIALES (theta)
 # ==========================================================
 
 # La fase representa la posición de cada
@@ -134,24 +134,24 @@ theta.mat <- matrix(NA, nrow = steps, ncol = N)
 # 5. SIMULACION DEL MODELO
 # ==========================================================
 
-# Aquí ocurre la dinámica principal.
+# Dinámica principal del modelo.
 #
 # En cada paso temporal:
 #
 # 1. Cada luciérnaga observa las demás
-# 2. Calcula el efecto colectivo
-# 3. Ajusta ligeramente su fase
+# 2. Se calcula el efecto colectivo
+# 3. Se ajusta ligeramente su fase
 # 4. Se actualiza el sistema
 #
 for(t in 1:steps){
   
-  # Creamos una copia temporal
+  # Se crea una copia temporal
   # para actualizar simultáneamente
   #
   theta.new <- theta
   
   
-  # Recorremos cada luciérnaga
+  # Se recorre cada luciérnaga
   #
   for(i in 1:N){
     
@@ -194,7 +194,7 @@ for(t in 1:steps){
     # INTEGRACION NUMERICA
     # ======================================================
     #
-    # Actualizamos la fase usando
+    # Se actualiza la fase usando
     # el método de Euler.
     #
     theta.new[i] <- theta[i] + dtheta * dt
