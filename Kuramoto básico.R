@@ -47,7 +47,7 @@ N <- 50
 # -> fuerte influencia mutua
 # -> sincronización colectiva
 #
-K <- 0.03
+K <- 2
 
 # Paso temporal de integración (dt)
 #
@@ -56,30 +56,37 @@ K <- 0.03
 #
 dt <- 0.05
 
-# Tiempo total de simulación (Tmax)
+# Tiempo total de simulación
 Tmax <- 100
 
-# Número total de pasos temporales (steps)
-steps <- Tmax / dt
+# Número total de pasos temporales
+Pasos <- Tmax / dt
 
 
 
 # ==========================================================
-# 2. FRECUENCIAS NATURALES (omega)
+# 2. FRECUENCIAS NATURALES (omega, ω)
 # ==========================================================
 
-# Se fija una semilla para reproducibilidad
+# Cada luciérnaga posee una frecuencia natural
+# ligeramente distinta.
+#
+# Biológicamente esto representa variabilidad
+# individual entre organismos. Lo representamos 
+# con el parametro omega
+#
+# Es frecuencia natural del oscilador. Es decir, la frecuencia 
+# natural es el ritmo propio con el que un proceso biológico 
+# (en este caso una luciérnaga) oscila cuando no está influenciado  
+# por otros componentes del sistema
+#
+# Fijamos una semilla para reproducibilidad
 #
 # Esto asegura que los resultados sean
 # siempre los mismos al ejecutar el código.
 #
 set.seed(123)
 
-# Cada luciérnaga posee una frecuencia natural
-# ligeramente distinta.
-#
-# Biológicamente esto representa variabilidad
-# individual entre organismos.
 #
 # rnorm genera valores aleatorios siguiendo
 # una distribución normal.
@@ -95,7 +102,7 @@ omega <- rnorm(N, mean = 1, sd = 0.1)
 
 
 # ==========================================================
-# 3. FASES INICIALES (theta)
+# 3. FASES INICIALES (Theta, θ)
 # ==========================================================
 
 # La fase representa la posición de cada
@@ -109,7 +116,7 @@ omega <- rnorm(N, mean = 1, sd = 0.1)
 #
 # Inicialmente las fases son aleatorias.
 #
-theta <- runif(N, 0, 2*pi)
+Theta <- runif(N, 0, 2*pi)
 
 
 
@@ -126,7 +133,7 @@ theta <- runif(N, 0, 2*pi)
 # Columnas:
 # -> individuos
 #
-theta.mat <- matrix(NA, nrow = steps, ncol = N)
+Theta.mat <- matrix(NA, nrow = Pasos, ncol = N)
 
 
 
@@ -134,7 +141,7 @@ theta.mat <- matrix(NA, nrow = steps, ncol = N)
 # 5. SIMULACION DEL MODELO
 # ==========================================================
 
-# Dinámica principal del modelo.
+# Aquí ocurre la dinámica principal.
 #
 # En cada paso temporal:
 #
@@ -143,15 +150,15 @@ theta.mat <- matrix(NA, nrow = steps, ncol = N)
 # 3. Se ajusta ligeramente su fase
 # 4. Se actualiza el sistema
 #
-for(t in 1:steps){
+for(t in 1:Pasos){
   
-  # Se crea una copia temporal
+  # Creamos una copia temporal
   # para actualizar simultáneamente
   #
-  theta.new <- theta
+  Theta.new <- Theta
   
   
-  # Se recorre cada luciérnaga
+  # Recorremos cada luciérnaga
   #
   for(i in 1:N){
     
@@ -159,7 +166,7 @@ for(t in 1:steps){
     # TERMINO DE ACOPLAMIENTO
     # ======================================================
     #
-    # sum(sin(theta - theta[i]))
+    # sum(sin(Theta - Theta[i]))
     #
     # Calcula la influencia colectiva
     # de todas las demás luciérnagas.
@@ -171,44 +178,44 @@ for(t in 1:steps){
     # Si están atrasadas:
     # -> la retrasan
     #
-    coupling <- sum(sin(theta - theta[i]))
+    Acoplamiento <- sum(sin(Theta - Theta[i]))
     
     
     # ======================================================
     # ECUACION DE KURAMOTO
     # ======================================================
     #
-    # dtheta:
+    # dTheta:
     # velocidad de cambio de la fase
     #
     # omega[i]
     # -> tendencia natural individual
     #
-    # (K/N)*coupling
+    # (K/N)*Acoplamiento
     # -> influencia social/colectiva
     #
-    dtheta <- omega[i] + (K/N) * coupling
+    dTheta <- omega[i] + (K/N) * Acoplamiento
     
     
     # ======================================================
     # INTEGRACION NUMERICA
     # ======================================================
     #
-    # Se actualiza la fase usando
+    # Actualizamos la fase usando
     # el método de Euler.
     #
-    theta.new[i] <- theta[i] + dtheta * dt
+    Theta.new[i] <- Theta[i] + dTheta * dt
   }
   
   
   # Actualizamos todas las fases
   #
-  theta <- theta.new
+  Theta <- Theta.new
   
   
   # Guardamos resultados
   #
-  theta.mat[t, ] <- theta
+  Theta.mat[t, ] <- Theta
 }
 
 
@@ -226,19 +233,19 @@ for(t in 1:steps){
 # R cercano a 1:
 # -> sincronización completa
 #
-R <- numeric(steps)
+R <- numeric(Pasos)
 
 
 
 # Calculamos R para cada instante temporal
 #
-for(t in 1:steps){
+for(t in 1:Pasos){
   
   # ========================================================
   # REPRESENTACION COMPLEJA
   # ========================================================
   #
-  # exp(i*theta)
+  # exp(i*Theta)
   #
   # Convierte cada fase angular
   # en un punto del círculo unitario.
@@ -251,7 +258,7 @@ for(t in 1:steps){
   # -> los vectores se refuerzan
   # -> R grande
   #
-  z <- mean(exp(1i * theta.mat[t, ]))
+  z <- mean(exp(1i * Theta.mat[t, ]))
   
   # Mod calcula el módulo
   # del número complejo.
@@ -266,7 +273,7 @@ for(t in 1:steps){
 # ==========================================================
 
 plot(
-  seq(1, Tmax, length.out = steps),
+  seq(1, Tmax, length.out = Pasos),
   R,
   type = "l",
   lwd = 3,
@@ -277,7 +284,7 @@ plot(
 
 # Línea de referencia
 #
-abline(h = 1, lty = 2)
+abline(h = 1, lty = 2, col = "red")
 
 
 
@@ -320,16 +327,17 @@ abline(h = 1, lty = 2)
 # -> puntos agrupados
 #
 plot(
-  cos(theta),
-  sin(theta),
+  cos(Theta),
+  sin(Theta),
   xlim = c(-1,1),
   ylim = c(-1,1),
   asp = 1,
   pch = 19,
-  xlab = "cos(theta)",
-  ylab = "sin(theta)",
+  xlab = "cos(Theta)",
+  ylab = "sin(Theta)",
   main = "Fases finales de las luciérnagas"
 )
+
 
 
 # ==========================================================
