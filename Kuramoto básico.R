@@ -339,5 +339,7 @@ plot(
 )
 
 
-
+# ==========================================================
+# Un buen video de introducción al modelo básico:
+# https://www.youtube.com/watch?v=ywd7jVIubOo
 # ==========================================================
