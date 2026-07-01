@@ -310,3 +310,10 @@ abline(v = T_forzamiento, lty = 2, col = "blue", lwd = 2)
 # efectiva de simular la intermitencia característica del canto de esta
 # especie, ofreciendo un modelo computacional que puede ser ajustado y
 # explorado para comprender mejor los mecanismos subyacentes a este fenómeno.
+
+# ==========================================================
+# Antecedente relevante:
+
+# Childs, L. M., & Strogatz, S. H. (2008). Stability diagram for the forced 
+# Kuramoto model. Chaos: An Interdisciplinary Journal of Nonlinear Science, 18(4), 043128.
+# ==========================================================
