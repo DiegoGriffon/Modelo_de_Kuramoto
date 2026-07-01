@@ -312,7 +312,18 @@ abline(v = T_forzamiento, lty = 2, col = "blue", lwd = 2)
 # explorado para comprender mejor los mecanismos subyacentes a este fenómeno.
 
 # ==========================================================
-# Antecedente relevante:
-# Childs, L. M., Strogatz, S. H. 2008. Stability diagram for the forced 
-# Kuramoto model. Chaos: An Interdisciplinary Journal of Nonlinear Science, 18(4), 043128.
+# Antecedentes relevantes:
+
+# Antonsen, T. M.  Faghih, R. T.  Girvan, M. Ott, E. J. Platig, J. 2008. External 
+# periodic driving of large systems of globally coupled phase oscillators, Chaos 18, 037112.
+
+# Childs, L. M., & Strogatz, S. H. 2008. Stability diagram for the forced Kuramoto model. 
+#Chaos: An Interdisciplinary Journal of Nonlinear Science, 18(4), 043128.
+
+# Ott, E. Antonsen, T. M. 2008. Low dimensional behavior of large systems of globally coupled 
+# oscillators, Chaos 18, 037113.
+
+# Sakaguchi, H. 1988. Cooperative phenomena in coupled oscillator systems under external fields,
+# Prog. Theor. Phys., 79, 39.
+
 # ==========================================================
