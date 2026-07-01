@@ -196,7 +196,7 @@ abline(v = T_forzamiento, lty = 2, col = "blue", lwd = 2)
 
 # ==========================================================
 
-#vescripción:
+# DESCRIPCIÓN:
   
 # La chicharra Quesada gigas es una especie de cigarra emblemática
 # de la ciudad de Caracas, Venezuela. Los machos adultos producen un canto
