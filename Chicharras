@@ -313,7 +313,6 @@ abline(v = T_forzamiento, lty = 2, col = "blue", lwd = 2)
 
 # ==========================================================
 # Antecedente relevante:
-
-# Childs, L. M., & Strogatz, S. H. (2008). Stability diagram for the forced 
+# Childs, L. M., Strogatz, S. H. 2008. Stability diagram for the forced 
 # Kuramoto model. Chaos: An Interdisciplinary Journal of Nonlinear Science, 18(4), 043128.
 # ==========================================================
