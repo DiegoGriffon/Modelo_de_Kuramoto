@@ -5,7 +5,7 @@
 #
 # Este código implementa una versión básica del
 # modelo de Kuramoto para estudiar cómo un grupo
-# de luciérnagas puede sincronizar sus destellos.
+# de luciérnagas puede sincronizar sus destellos. 
 #
 # ----------------------------------------------------------
 # IDEA BIOLOGICA
