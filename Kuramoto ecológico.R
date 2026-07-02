@@ -2,7 +2,15 @@
 # MODELO ECOLOGICO ESPACIAL DE KURAMOTO EN R
 # ===============================================================
 #
-# SINCRONIZACION DE LUCIERNAGAS EN UN PAISAJE
+# Este código implementa una simulación espacial del modelo de Kuramoto 
+# aplicado a luciérnagas en un paisaje heterogéneo. Cada individuo es un 
+# oscilador con fase propia, frecuencia natural y posición en el espacio, 
+# que interactúa con otros según la distancia, la estructura del hábitat 
+# (vegetación), la densidad local y la contaminación lumínica. El acoplamiento
+# entre individuos es variable y depende del entorno ecológico, lo que permite 
+# estudiar cómo emerge la sincronización colectiva bajo distintos escenarios 
+# ambientales. El modelo incorpora además ruido ambiental y permite medir el 
+# grado global de sincronización mediante el parámetro de orden.
 #
 # ---------------------------------------------------------------
 # Este modelo incorpora:
