@@ -4,7 +4,7 @@
 # ==========================================================
 
 # Este código implementa una versión modelo de Kuramoto para 
-# simular la sincronización del canto de la chicharra Quesada gigas. 
+# simular la sincronización del canto de la chicharra Quesada gigas.  
 
 # Cada insecto se representa como un oscilador de fase que vibra 
 # con una frecuencia natural ligeramente diferente. La interacción entre 
