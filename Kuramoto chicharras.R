@@ -3,7 +3,7 @@
 # MODELO DE KURAMOTO CON FORZAMIENTO EXTERNO 
 # ==========================================================
 
-# Este código implementa una versión modelo de Kuramoto para 
+# Este código implementa una versión modelo de Kuramoto para   
 # simular la sincronización del canto de la chicharra Quesada gigas.  
 
 # Cada insecto se representa como un oscilador de fase que vibra 
