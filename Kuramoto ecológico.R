@@ -80,7 +80,7 @@ landscape.size <- 100
 # Valores altos:
 # -> fuerte sincronización
 #
-K <- 2
+K <- 0.01
 
 
 # ---------------------------------------------------------------
@@ -416,10 +416,33 @@ plot(
 
 abline(h = 1, lty = 2)
 
-
+# ==========================================================
+# 13. VISUALIZACION DE LAS FASES
+# ==========================================================
+#
+# Esta gráfica representa las fases
+# como puntos sobre un círculo.
+#
+# Cuando hay desorden:
+# -> puntos dispersos
+#
+# Cuando hay sincronización:
+# -> puntos agrupados
+#
+plot(
+  cos(theta),
+  sin(theta),
+  xlim = c(-1,1),
+  ylim = c(-1,1),
+  asp = 1,
+  pch = 19,
+  xlab = "cos(Theta)",
+  ylab = "sin(Theta)",
+  main = "Fases finales de las luciérnagas"
+)
 
 # ===============================================================
-# 13. VISUALIZACION ESPACIAL
+# 14. VISUALIZACION ESPACIAL
 # ===============================================================
 #
 # Mostramos posición espacial
@@ -432,18 +455,15 @@ plot(
   y,
   pch = 19,
   cex = 2,
-  col = phase.colors[
-    rank(theta %% (2*pi))
-  ],
+  col = "#C0FF3E",
   xlab = "X",
   ylab = "Y",
-  main = "Distribución espacial de fases"
+  main = "Distribución espacial de luciérnaga"
 )
 
 
-
 # ===============================================================
-# 14. INTERPRETACION ECOLOGICA
+# 15. INTERPRETACION ECOLOGICA
 # ===============================================================
 #
 # R cercano a 0:
